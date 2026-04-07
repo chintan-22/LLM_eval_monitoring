@@ -57,14 +57,14 @@ jobs:
     
     - name: Upload artifacts
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: evaluation-results
         path: evaluation_results.json
     
     - name: Upload MLflow runs
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: mlflow-runs
         path: mlruns/
