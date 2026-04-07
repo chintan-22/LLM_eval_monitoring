@@ -1,0 +1,51 @@
+[{
+        "question": "What are the key advantages of a diversified investment portfolio?",
+        "retrieved_context": "A diversified investment portfolio spreads investments across different asset classes, sectors, and geographic regions. This reduces idiosyncratic risk and helps protect against market downturns in any single area. Diversification can improve risk-adjusted returns by balancing growth and stability.",
+        "ground_truth": "Diversification reduces risk by spreading investments across multiple assets, sectors, and geographies. It protects portfolios from downturns in any single area and improves risk-adjusted returns.",
+        "model_answer": "Diversification helps reduce risk by spreading investments across different asset classes and sectors. This protects your portfolio from major losses if one investment performs poorly.",
+        "metadata": {
+            "category": "portfolio_strategy",
+            "difficulty": "easy"
+        }
+    },
+    {
+        "question": "How does value investing differ from growth investing?",
+        "retrieved_context": "Value investing focuses on finding undervalued stocks trading below their intrinsic value. Value investors believe the market has misprice these securities. Growth investing focuses on companies expected to grow faster than the overall market. Growth investors are willing to pay premium prices for companies with strong future earnings potential.",
+        "ground_truth": "Value investing targets undervalued stocks with strong fundamentals, while growth investing targets companies with above-market earnings growth potential. Value investors look for bargains, while growth investors pay premium prices for future potential.",
+        "model_answer": "Value investing seeks undervalued companies trading below their true worth, while growth investing targets companies with strong future growth potential. Value investors look for bargains, whereas growth investors prioritize earnings potential.",
+        "metadata": {
+            "category": "investment_strategies",
+            "difficulty": "medium"
+        }
+    },
+    {
+        "question": "What are the risks associated with high-leverage investments?",
+        "retrieved_context": "High leverage amplifies both gains and losses. Using borrowed money to invest increases potential returns but also dramatically increases the downside risk. Leveraged positions are vulnerable to margin calls and forced liquidation if asset prices decline significantly.",
+        "ground_truth": "High leverage amplifies both profits and losses, making positions riskier. Leveraged investors face margin calls and forced liquidation risks during downturns, potentially resulting in losses exceeding initial capital.",
+        "model_answer": "Leverage amplifies both profits and losses, increasing overall portfolio risk. High-leverage positions can trigger margin calls and force liquidation during market downturns, potentially losing more than the initial investment.",
+        "metadata": {
+            "category": "risk_management",
+            "difficulty": "hard"
+        }
+    },
+    {
+        "question": "What is dollar-cost averaging and why is it useful?",
+        "retrieved_context": "Dollar-cost averaging (DCA) is an investment strategy where you invest a fixed amount of money at regular intervals regardless of market conditions. This approach reduces the impact of market timing and volatility. By investing consistently, you buy more shares when prices are low and fewer when prices are high, potentially lowering your average cost per share.",
+        "ground_truth": "Dollar-cost averaging is investing a fixed amount regularly regardless of market conditions. It reduces timing risk, automatically buys more shares at lower prices and fewer at higher prices, potentially lowering average cost.",
+        "model_answer": "Dollar-cost averaging involves investing the same amount at regular intervals. This strategy reduces the impact of market volatility and ensures you automatically buy more shares when prices are low.",
+        "metadata": {
+            "category": "investment_strategies",
+            "difficulty": "easy"
+        }
+    },
+    {
+        "question": "How should investors evaluate a company's financial health?",
+        "retrieved_context": "Key financial metrics include debt-to-equity ratio (financial leverage), current ratio (short-term solvency), quick ratio (liquidity), return on equity (profitability), and earnings per share (EPS). Balance sheet analysis reveals assets, liabilities, and equity. Income statement shows revenue, expenses, and profitability. Cash flow statement shows actual cash movements.",
+        "ground_truth": "Investors should analyze key metrics like debt-to-equity ratio, current ratio, ROE, and EPS. Review balance sheets for assets/liabilities, income statements for profitability, and cash flow statements for actual cash movements.",
+        "model_answer": "Evaluate financial health using key metrics: debt-to-equity ratio, current ratio, ROE, and EPS. Analyze balance sheets to understand asset/liability structure, income statements for profitability, and cash flows.",
+        "metadata": {
+            "category": "fundamental_analysis",
+            "difficulty": "medium"
+        }
+    }
+]
