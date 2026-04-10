@@ -1,0 +1,290 @@
+═══════════════════════════════════════════════════════════════════════════════
+  CHANGES OTHER USERS NEED TO MAKE
+═══════════════════════════════════════════════════════════════════════════════
+
+
+🔴 CRITICAL: Must Change (3 Steps - 10 Minutes)
+──────────────────────────────────────────────────────────────────────────────
+
+1️⃣ CREATE .env FILE
+   Location: Project root
+   Action:
+     $ cp .env.example .env
+     $ nano .env
+   
+   Change these values:
+     MODEL_NAME=your-model                    (e.g., gpt-3.5-turbo)
+     MODEL_PROVIDER=your-provider             (e.g., openai)
+     FAITHFULNESS_THRESHOLD=0.75              (your quality standard)
+     ANSWER_RELEVANCY_THRESHOLD=0.70          (your quality standard)
+     CONTEXT_PRECISION_THRESHOLD=0.65         (your quality standard)
+     SEMANTIC_SIMILARITY_THRESHOLD=0.60       (your quality standard)
+
+
+2️⃣ REPLACE GOLDEN DATASET
+   Location: data/golden_dataset.json
+   Current: 5 investment Q&A pairs
+   Action: Replace with YOUR Q&A pairs
+   
+   Keep this structure:
+     {
+       "question": "YOUR QUESTION",
+       "retrieved_context": "YOUR CONTEXT",
+       "ground_truth": "EXPECTED ANSWER",
+       "model_answer": "ACTUAL ANSWER",
+       "metadata": {"category": "...", "difficulty": "..."}
+     }
+   
+   Need at least 5 examples
+
+
+3️⃣ TEST IT
+   $ python scripts/run_eval.py
+   
+   Should see:
+     ✓ Configuration loaded
+     ✓ Dataset loaded: X samples
+     ✓ Evaluation complete
+     ✓ Metrics computed
+
+
+🟡 RECOMMENDED: Optional Configuration (5-10 Minutes)
+──────────────────────────────────────────────────────────────────────────────
+
+□ Setup MLflow (experiment tracking)
+  - Enable: USE_MLFLOW=true
+  - Run: mlflow ui
+  - Access: http://localhost:5000
+
+□ Setup Slack alerts (notifications)
+  - Create webhook: https://api.slack.com/apps
+  - Add to .env: SLACK_WEBHOOK_URL=your-url
+  - Enable: ENABLE_SLACK_ALERTS=true
+
+□ Enable RAGAS (advanced metrics)
+  - Install: pip install ragas
+  - Enable: USE_RAGAS=true
+
+□ Adjust quality thresholds
+  - Strict: 0.85 (critical applications)
+  - Balanced: 0.75 (default)
+  - Lenient: 0.50 (experimental)
+
+□ Change logging level
+  - DEBUG: Very detailed
+  - INFO: Standard (recommended)
+  - WARNING: Minimal
+
+
+🟢 ADVANCED: Optional Customizations (20-60 Minutes)
+──────────────────────────────────────────────────────────────────────────────
+
+□ Add custom metrics
+  File: app/metrics.py
+  Method: Add _evaluate_custom_metric()
+  Time: 30 minutes
+
+□ Customize dashboard
+  File: dashboard/streamlit_app.py
+  Action: Add charts, tables, visualizations
+  Time: 60 minutes
+
+□ Custom drift detection
+  File: app/drift_detector.py
+  Action: Modify detect_drift() method
+  Time: 30 minutes
+
+□ Additional alert types
+  File: app/alerts.py
+  Action: Add email, Teams, Discord, etc.
+  Time: 30 minutes
+
+
+📋 FILE CHECKLIST
+──────────────────────────────────────────────────────────────────────────────
+
+SAFE TO EDIT (✓ Go ahead):
+  ✓ .env                              → Configuration
+  ✓ data/golden_dataset.json          → Your Q&A data
+  ✓ app/metrics.py                    → Add metrics
+  ✓ app/alerts.py                     → Add alerts
+  ✓ app/drift_detector.py             → Customize drift
+  ✓ app/utils.py                      → Custom loaders
+  ✓ dashboard/streamlit_app.py        → Customize UI
+  ✓ tests/                            → Add tests
+
+EDIT WITH CAUTION (⚠️ Only if needed):
+  ⚠️ app/config.py                    → Use .env instead
+  ⚠️ app/eval_engine.py               → Core logic
+  ⚠️ app/mlflow_logger.py             → Works as-is
+  ⚠️ scripts/run_eval.py              → Works as-is
+
+DON'T EDIT (✗ Leave alone):
+  ✗ app/__init__.py
+  ✗ requirements.txt                  (unless adding libraries)
+  ✗ .github/workflows/eval.yml        (unless customizing CI/CD)
+  ✗ Documentation files
+
+
+🎯 QUICK START (5 Minutes)
+──────────────────────────────────────────────────────────────────────────────
+
+1. cp .env.example .env
+2. Edit .env: Change MODEL_NAME and thresholds
+3. Edit data/golden_dataset.json: Add your Q&A
+4. python scripts/run_eval.py
+5. Done! 🎉
+
+
+📊 SUMMARY TABLE
+──────────────────────────────────────────────────────────────────────────────
+
+What to Change          Required?  Time      Difficulty  File
+─────────────────────   ─────────  ────────  ──────────  ────────────
+Create .env             ✅ YES     2 min     Easy        .env
+Replace dataset         ✅ YES     5-10 min  Easy        data/golden_dataset.json
+Update thresholds       🟡 MAYBE   1 min     Easy        .env
+MLflow setup            🟢 NO      5 min     Easy        .env
+Slack alerts            �� NO      5 min     Easy        .env
+Custom metrics          🟢 NO      30 min    Medium      app/metrics.py
+Dashboard customization 🟢 NO      60 min    Medium      dashboard/streamlit_app.py
+Drift detection         🟢 NO      30 min    Hard        app/drift_detector.py
+Alert types             🟢 NO      30 min    Hard        app/alerts.py
+
+
+💾 CONFIGURATION VALUES (In .env)
+──────────────────────────────────────────────────────────────────────────────
+
+MUST CHANGE:
+  MODEL_NAME                          Your LLM name
+  MODEL_PROVIDER                      openai, anthropic, huggingface, etc.
+  *_THRESHOLD values                  Your quality standards (0.0-1.0)
+
+NICE TO CHANGE:
+  ENABLE_MLFLOW                       true/false
+  MLFLOW_TRACKING_URI                 localhost or remote server
+  SLACK_WEBHOOK_URL                   Your Slack webhook
+  LOG_LEVEL                           DEBUG, INFO, WARNING
+  DRIFT_THRESHOLD                     How much change before alert
+
+OPTIONAL:
+  USE_RAGAS                           Enable advanced metrics
+  ENABLE_SLACK_ALERTS                 Get notifications
+  ENABLE_DRIFT_DETECTION              Monitor performance
+
+
+📚 DOCUMENTATION
+──────────────────────────────────────────────────────────────────────────────
+
+Quick Start:
+  → Start here: CHANGES_FOR_OTHER_USERS.md
+  → TL;DR: This file (CHANGES_SUMMARY.txt)
+
+Detailed Setup:
+  → NEW_USER_SETUP.md                 (Step-by-step guide)
+  → SETUP_CHECKLIST.md                (Verification checklist)
+
+Using the System:
+  → README.md                         (Project overview)
+  → PROJECT_MAP.md                    (File structure)
+  → QUICK_TEST_COMMANDS.md            (Copy-paste commands)
+
+Testing:
+  → TESTING_GUIDE.md                  (Complete testing guide)
+  → TESTING_SUMMARY.txt               (Test results)
+
+Troubleshooting:
+  → See GITHUB_ACTIONS_FIX.md         (If CI/CD fails)
+
+
+⚡ RAPID REFERENCE
+──────────────────────────────────────────────────────────────────────────────
+
+What is this project?
+  → LLM Evaluation & Monitoring Pipeline
+  → Evaluates LLM response quality
+  → Detects performance degradation
+  → Sends alerts when quality drops
+
+What do I need to change?
+  → .env file (configuration)
+  → data/golden_dataset.json (your Q&A data)
+  → Everything else is optional
+
+How long does setup take?
+  → Minimum: 5 minutes
+  → Recommended: 30 minutes
+  → Full customization: 2-3 hours
+
+What are the quality metrics?
+  → Faithfulness (how accurate to context)
+  → Answer Relevancy (how relevant to question)
+  → Context Precision (how relevant is context)
+  → Semantic Similarity (how close to ground truth)
+
+How do I know if it's working?
+  → Run: python scripts/run_eval.py
+  → Should see: 4 metrics × N samples evaluated
+  → Check logs: tail logs/evaluation.log
+
+
+✅ SUCCESS CHECKLIST
+──────────────────────────────────────────────────────────────────────────────
+
+Setup is complete when:
+  ✅ .env created with your model name
+  ✅ data/golden_dataset.json has your Q&A pairs
+  ✅ python scripts/run_eval.py runs without errors
+  ✅ All 4 metrics computed for each sample
+  ✅ Thresholds are checked
+  ✅ Results logged to logs/evaluation.log
+
+Optional extras:
+  ✅ MLflow tracking set up (experiments saved)
+  ✅ Slack alerts configured (get notifications)
+  ✅ Dashboard working (http://localhost:8501)
+  ✅ GitHub Actions workflow passing
+
+
+🚀 NEXT STEPS AFTER SETUP
+──────────────────────────────────────────────────────────────────────────────
+
+1. Run tests to verify:
+   $ python -m pytest tests/ -v
+
+2. Check results:
+   $ tail -50 logs/evaluation.log
+
+3. Launch dashboard (optional):
+   $ streamlit run dashboard/streamlit_app.py
+
+4. Customize (optional):
+   - Add custom metrics
+   - Adjust thresholds
+   - Set up alerts
+
+5. Deploy to production (optional):
+   - Use in CI/CD pipeline
+   - Monitor continuously
+   - Integrate with your system
+
+
+═══════════════════════════════════════════════════════════════════════════════
+  SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+Other users need to make 3 critical changes:
+
+1. Create .env file (from .env.example)
+2. Replace data/golden_dataset.json with their Q&A
+3. Run python scripts/run_eval.py
+
+Everything else is optional!
+
+Time to get running: 5-10 minutes
+Time for full setup: 30 minutes
+Time for customization: 2-3 hours
+
+All detailed guides available in project documentation.
+
+═══════════════════════════════════════════════════════════════════════════════
